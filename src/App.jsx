@@ -100,7 +100,7 @@ class ProductAdd extends React.Component {
                             </td>                            
                             <td>
                                 <label htmlFor="image"> <h4>Image URL</h4>
-                                    <input type="url" name="image" id="image" placeholder="Image URL" required />
+                                    <input type="url" name="image" id="image" placeholder="Image URL" />
                                 </label>
                             </td>
                         </tr>
@@ -117,6 +117,26 @@ class ProductAdd extends React.Component {
     }
 }
 
+
+async function graphQLFetch(query, variables = {}) {
+    try {
+      const response = await fetch('/graphql', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json'},
+        body: JSON.stringify({ query, variables })
+      });
+      const result = await response.json();      
+      if (result.errors) {
+        const error = result.errors[0];       
+        alert(`${error.extensions.code}: ${error.message}`);
+       
+      }
+      return result.data;
+    } catch (e) {
+      alert(`Error in sending data to server: ${e.message}`);
+    }
+  }
+
 class ProductList extends React.Component {
 
     constructor(){
@@ -125,11 +145,33 @@ class ProductList extends React.Component {
         this.createProduct = this.createProduct.bind(this)
     }
     
-    createProduct(product) {
-        product.id = this.state.products.length + 1;     
-        const newProductList = this.state.products.slice();
-        newProductList.push(product);
-        this.setState({products : newProductList});
+    componentDidMount(){
+        this.loadData();
+    }
+
+    async loadData(){
+        const query = `query {
+            productList {
+                id name category price image
+            }
+        }`
+
+        const data = await graphQLFetch(query);
+        if (data) {
+            this.setState({ products : data.productList });
+        }            
+    }
+
+    async createProduct(product) {
+        const query = `mutation productAdd($product : ProductInputs!){
+            productAdd( product : $product) {
+                id
+            }
+        }`
+        const data = await graphQLFetch(query, {product});
+        if(data) {
+            this.loadData();
+        }
     }
 
     render() {

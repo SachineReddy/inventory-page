@@ -1,0 +1,35 @@
+{
+  "name": "inventory-api",
+  "version": "1.0.0",
+  "description": "Inventory page API",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon -e js,graphql -w . -w .env server.js",
+    "lint": "eslint ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SachineReddy/inventory-page.git"
+  },
+  "author": "Sachine Reddy",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/SachineReddy/inventory-page/issues"
+  },
+  "homepage": "https://github.com/SachineReddy/inventory-page#readme",
+  "dependencies": {
+    "apollo-server-express": "^2.21.0",
+    "dotenv": "^6.2.0",
+    "express": "^4.17.1",
+    "graphql": "^0.13.2",
+    "mongodb": "^3.6.4",
+    "nodemon": "^2.0.7"
+  },
+  "devDependencies": {
+    "eslint": "^7.22.0",
+    "eslint-config-airbnb": "^18.2.1",
+    "eslint-config-airbnb-base": "^13.2.0",
+    "eslint-plugin-import": "^2.22.1"
+  }
+}

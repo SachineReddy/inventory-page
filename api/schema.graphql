@@ -1,4 +1,5 @@
 type Product {
+    _id: ID!
     id: Int!
     name: String!
     category: Category!
@@ -23,8 +24,7 @@ enum Category {
 #### Top level declarations
 
 type Query {
-    productList : [Product!]! ,
-    product( id : Int! ) : Product
+    productList : [Product!]!    
 }
 
 type Mutation {

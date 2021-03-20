@@ -4,9 +4,9 @@ An inventory page demonstrating usage of React components and state
 
 Steps to run the application :  
 
-Pre-req : node and npm are already installed on the machine  
+Pre-req : node, npm and mongoDB shell are already installed on the machine  
 
-1. Run 'npm install' from the root folder to install all the required dependencies.  
-2. Run 'npm run compile' to transpile all the jsx files. You can run 'npm run watch', to watch for any changes made in the jsx files.  
-3. Run 'npm start', the application is hosted on localhost:3000  
+1. Navigate to ui folder and run : npm install followed by npm run compile and then npm start
+2. Navigate to api folder and run : npm install followed by npm start
+3. The application is hosted on localhost:8000, you can add new products and view them
 

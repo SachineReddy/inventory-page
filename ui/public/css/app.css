@@ -1,60 +1,67 @@
 html {
-    position: absolute;
-    height: 100%;
+  position: absolute;
+  height: 100%;
 }
 
 body {
-    position: relative;
-    height: 100%;
-    background-color: #eee;
-    font-family: 'Merriweather', serif;
-    color: #626364;    
+  position: relative;
+  height: 100%;
+  background-color: #eee;
+  font-family: "Merriweather", serif;
+  color: #626364;
 }
 
 #inventory {
-    position: relative;    
-    min-height: 100vh; 
-    margin: 30px 30px 30px 30px;      
-    padding: 20px 20px 20px 20px;   
+  position: relative;
+  min-height: 100vh;
+  margin: 30px 30px 30px 30px;
+  padding: 20px 20px 20px 20px;
 }
 
-table.bordered-table th, table.bordered-table td {
-    border: 2px solid silver;
-    padding: 4px;
+table.bordered-table th,
+table.bordered-table td {
+  border: 2px solid silver;
+  padding: 4px;
 }
 
-table.product-add-table th, td {
-    border: 0;
-    padding: 10px;
+table.product-add-table th,
+td {
+  border: 0;
+  padding: 10px;
 }
 
-.dollar{
-	display:inline-block;
-	position: relative;
+.dollar {
+  display: inline-block;
+  position: relative;
 }
-.dollar input{
-	padding-left:15px;
+.dollar input {
+  padding-left: 15px;
 }
 .dollar:before {
-	position: absolute;
-    content:"$";
-    left:5px;
-	top:5px;
+  position: absolute;
+  content: "$";
+  left: 5px;
+  top: 5px;
 }
 
-input, select {
-    width:200px;
-    height:25px;
-    border : 2px solid silver;
-    vertical-align:top;
-    font-family: 'Merriweather', serif;
+input,
+select {
+  width: 200px;
+  height: 25px;
+  border: 2px solid silver;
+  vertical-align: top;
+  font-family: "Merriweather", serif;
 }
 
 button {
-    width:175px;
-    height:30px;
-    font-family: 'Merriweather', serif;
-    border: 2px solid silver;
-    color: #626364;  
-    font-size: 15px;
+  width: 175px;
+  height: 30px;
+  font-family: "Merriweather", serif;
+  border: 2px solid silver;
+  color: #626364;
+  font-size: 15px;
+}
+
+a.active {
+  background-color: #d8d8f5;
 }

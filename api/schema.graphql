@@ -1,32 +1,42 @@
 type Product {
-    _id: ID!
-    id: Int!
-    name: String!
-    category: Category!
-    price: Float
-    image: String
+  _id: ID!
+  id: Int!
+  name: String!
+  category: Category!
+  price: Float
+  image: String
 }
 
 input ProductInputs {
-    name: String!
-    category: Category!
-    price: Float
-    image: String    
+  name: String!
+  category: Category!
+  price: Float
+  image: String
+}
+
+input ProductUpdateInputs {
+  name: String
+  category: Category
+  price: Float
+  image: String
 }
 
 enum Category {
-    Shirts
-    Jeans
-    Jackets
-    Sweaters
-    Accessories
+  Shirts
+  Jeans
+  Jackets
+  Sweaters
+  Accessories
 }
 #### Top level declarations
 
 type Query {
-    productList : [Product!]!    
+  productList: [Product!]!
+  product(id: Int!): Product!
 }
 
 type Mutation {
-    productAdd( product : ProductInputs!) : Product!
+  productAdd(product: ProductInputs!): Product!
+  productUpdate(id: Int!, changes: ProductUpdateInputs!): Product!
+  productDelete(id: Int!): Boolean!
 }

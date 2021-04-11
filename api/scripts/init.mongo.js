@@ -23,3 +23,4 @@ db.counters.insert({ _id: 'products', current: count });
 
 db.products.createIndex({ id: 1 }, { unique: true });
 db.products.createIndex({ name: 1 });
+  

@@ -2,6 +2,9 @@
 /* eslint linebreak-style: ["error", "windows"] */
 
 import React from 'react';
+import {
+  Panel,
+} from 'react-bootstrap';
 import graphQLFetch from './graphQLFetch.js';
 
 export default class ProductImage extends React.Component {
@@ -31,11 +34,14 @@ export default class ProductImage extends React.Component {
   render() {
     const { product } = this.state;
     return (
-      <div>
-        <br />
-        <h2>{`Product name : ${product.name}`}</h2>
-        <img src={product.image} alt="Image not available" width="500" height="600" />
-      </div>
+      <Panel>
+        <Panel.Heading>
+          <Panel.Title>{`Product name : ${product.name}`}</Panel.Title>
+        </Panel.Heading>
+        <Panel.Body>
+          <img src={product.image} alt="Image not available" style={{ maxWidth: '100vw' }} />
+        </Panel.Body>
+      </Panel>
     );
   }
 }

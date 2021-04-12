@@ -3,6 +3,9 @@
 /* eslint-disable max-len */
 
 import React from 'react';
+import {
+  Col, Panel, Form, FormControl, FormGroup, ControlLabel, ButtonToolbar, Button,
+} from 'react-bootstrap';
 
 export default class ProductAdd extends React.Component {
   constructor() {
@@ -33,55 +36,70 @@ export default class ProductAdd extends React.Component {
     const categories = ['Shirts', 'Jeans', 'Jackets', 'Sweaters', 'Accessories'];
     const { priceValue } = this.state;
     return (
-      <form name="productAdd" onSubmit={this.handleSubmit}>
-        <table className="product-add-table">
-          <tbody>
-            <tr>
-              <td>
-                <label htmlFor="category">
-                  <h4>Category</h4>
-                  <select name="category" id="category" defaultValue="" required>
-                    <option value="" disabled>Choose category</option>
-                    {categories
-                      .map((category, index) => <option key={index + 1} value={index + 1}>{category}</option>)}
-                  </select>
-                </label>
-              </td>
-              <td>
-                <label htmlFor="price">
-                  <h4>Price Per Unit</h4>
-                  <input
-                    name="price"
-                    id="price"
-                    value={priceValue}
-                    onChange={e => this.setState({ priceValue: e.target.value })}
-                  />
-                </label>
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <label htmlFor="productName">
-                  <h4>Product Name</h4>
-                  <input type="text" name="productName" id="productName" placeholder="Name" required />
-                </label>
-              </td>
-              <td>
-                <label htmlFor="image">
-                  <h4>Image URL</h4>
-                  <input type="url" name="image" id="image" placeholder="Image URL" />
-                </label>
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <br />
-                <button type="submit"><b>Add product</b></button>
-              </td>
-            </tr>
-          </tbody>
-        </table>
-      </form>
+      <Panel>
+        <Panel.Heading>
+          <Panel.Title>Add a new product to inventory</Panel.Title>
+        </Panel.Heading>
+        <Panel.Body>
+          <Form horizontal name="productAdd" onSubmit={this.handleSubmit}>
+            <FormGroup>
+              <Col componentClass={ControlLabel} sm={2}>Category</Col>
+              <Col sm={3}>
+                <FormControl
+                  componentClass="select"
+                  name="category"
+                  id="category"
+                  defaultValue=""
+                  required
+                >
+                  <option value="" disabled>Choose category</option>
+                  {categories
+                    .map((category, index) => <option key={index + 1} value={index + 1}>{category}</option>)}
+                </FormControl>
+              </Col>
+              <Col componentClass={ControlLabel} sm={2}>Price Per Unit:</Col>
+              <Col sm={3}>
+                <FormControl
+                  componentClass="input"
+                  name="price"
+                  value={priceValue}
+                  id="price"
+                  onChange={e => this.setState({ priceValue: e.target.value })}
+                />
+              </Col>
+            </FormGroup>
+            <FormGroup>
+              <Col componentClass={ControlLabel} sm={2}>Product Name:</Col>
+              <Col sm={3}>
+                <FormControl
+                  componentClass="input"
+                  type="text"
+                  name="productName"
+                  id="productName"
+                  required
+                />
+              </Col>
+              <Col componentClass={ControlLabel} sm={2}>Image URL:</Col>
+              <Col sm={3}>
+                <FormControl
+                  componentClass="input"
+                  type="url"
+                  name="image"
+                  id="image"
+                />
+              </Col>
+            </FormGroup>
+            <FormGroup>
+              <Col smOffset={3} sm={6}>
+                <ButtonToolbar>
+                  <Button bsStyle="primary" type="submit">Add Product</Button>
+                </ButtonToolbar>
+              </Col>
+            </FormGroup>
+          </Form>
+        </Panel.Body>
+      </Panel>
+
     );
   }
 }

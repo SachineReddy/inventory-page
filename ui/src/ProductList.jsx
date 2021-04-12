@@ -2,6 +2,7 @@
 
 import React from 'react';
 
+import { Label } from 'react-bootstrap';
 import ProductTable from './ProductTable.jsx';
 import ProductAdd from './ProductAdd.jsx';
 import graphQLFetch from './graphQLFetch.js';
@@ -55,13 +56,7 @@ export default class ProductList extends React.Component {
     const { products } = this.state;
     return (
       <React.Fragment>
-        <h1>My Company Inventory</h1>
-        <h3>Showing all available products</h3>
-        <hr />
         <ProductTable products={products} deleteProduct={this.deleteProduct} />
-        <br />
-        <h3>Add a new product to inventory</h3>
-        <hr />
         <ProductAdd createProduct={this.createProduct} />
       </React.Fragment>
 

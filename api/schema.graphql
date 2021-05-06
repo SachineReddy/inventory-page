@@ -28,11 +28,13 @@ enum Category {
   Sweaters
   Accessories
 }
+
 #### Top level declarations
 
 type Query {
   productList: [Product!]!
   product(id: Int!): Product!
+  productCounts: Int!
 }
 
 type Mutation {

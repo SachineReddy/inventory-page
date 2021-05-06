@@ -9,6 +9,23 @@ async function list() {
   return products;
 }
 
+async function counts() {
+  const db = getDb();
+  const results = await db.collection('products')
+    .aggregate([
+      {
+        $group: {
+          _id: null,
+          total: { $sum: 1 },
+        },
+      },
+    ]).toArray();
+  return results[0].total;
+  // const results = await db.collection('products').find().count();
+  // return results;
+}
+
+
 function validate(product) {
   const errors = [];
   if (product.name === null || product.name === '') errors.push('Product name not specified');
@@ -55,5 +72,5 @@ async function update(_, { id, changes }) {
 }
 
 module.exports = {
-  list, add, retrieve, remove, update,
+  list, add, retrieve, remove, update, counts,
 };

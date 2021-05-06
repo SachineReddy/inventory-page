@@ -1,8 +1,8 @@
+/* eslint-disable react/jsx-one-expression-per-line */
 /* eslint linebreak-style: ["error", "windows"] */
 
 import React from 'react';
 
-import { Label } from 'react-bootstrap';
 import ProductTable from './ProductTable.jsx';
 import ProductAdd from './ProductAdd.jsx';
 import graphQLFetch from './graphQLFetch.js';
@@ -10,7 +10,7 @@ import graphQLFetch from './graphQLFetch.js';
 export default class ProductList extends React.Component {
   constructor() {
     super();
-    this.state = { products: [] };
+    this.state = { products: [], productTotal: 0 };
     this.createProduct = this.createProduct.bind(this);
     this.deleteProduct = this.deleteProduct.bind(this);
   }
@@ -20,6 +20,7 @@ export default class ProductList extends React.Component {
   }
 
   async loadData() {
+    this.loadCount();
     const query = `query {
               productList {
                   id name category price image
@@ -29,6 +30,17 @@ export default class ProductList extends React.Component {
     const data = await graphQLFetch(query);
     if (data) {
       this.setState({ products: data.productList });
+    }
+  }
+
+  async loadCount() {
+    const query = `query {
+              productCounts 
+          }`;
+
+    const data = await graphQLFetch(query);
+    if (data) {
+      this.setState({ productTotal: data.productCounts });
     }
   }
 
@@ -53,9 +65,10 @@ export default class ProductList extends React.Component {
   }
 
   render() {
-    const { products } = this.state;
+    const { products, productTotal } = this.state;
     return (
       <React.Fragment>
+        <h4>Showing { productTotal } available products</h4>
         <ProductTable products={products} deleteProduct={this.deleteProduct} />
         <ProductAdd createProduct={this.createProduct} />
       </React.Fragment>

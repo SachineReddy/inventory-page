@@ -1,4 +1,3 @@
-/* eslint-disable react/jsx-one-expression-per-line */
 /* eslint linebreak-style: ["error", "windows"] */
 
 import React from 'react';
@@ -35,7 +34,7 @@ export default class ProductList extends React.Component {
 
   async loadCount() {
     const query = `query {
-              productCounts 
+              productCounts
           }`;
 
     const data = await graphQLFetch(query);
